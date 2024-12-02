@@ -1,28 +1,18 @@
 pipeline {
     agent any
-
-    stages {
-        stage('Deploy to Nginx') {
-            steps {
-                script {
-                    // Assuming the index.html is already present in the Jenkins workspace
-                    // Copy the specific index.html file to Nginx server's web directory
-                    sh 'sudo cp index.html /var/www/html/'
-
-                    // Restart Nginx to apply changes
-                    sh 'sudo systemctl restart nginx'
-                }
-            }
+    stage('Build Docker Image') {
+        steps {
+            sh 'docker build -t image1 .'
         }
     }
-
-    post {
-        success {
-            echo 'Deployment was successful!'
+    stage('Run Docker Container') {
+        steps {
+            sh 'docker run -d -p 9090:80 --name cont1 image1'
         }
-
-        failure {
-            echo 'Deployment failed!'
+    }
+    post {
+        always {
+            echo 'Deployment Completed!'
         }
     }
 }
