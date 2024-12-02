@@ -8,7 +8,11 @@ pipeline {
         }
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 9090:80 --name cont1 image1'
+                sh '''
+                    docker stop cont1 || true
+                    docker rm cont1 || true
+                    docker run -d -p 9090:80 --name cont1 image1
+                '''
             }
         }
     }
