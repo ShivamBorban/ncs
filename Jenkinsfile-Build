@@ -2,6 +2,7 @@ pipeline {
     agent any
     parameters {
         string(name: 'Image Name', description: 'Type the name of the Docker image')
+        string(name: 'Container Name', description: 'Type the name of the Container ')
     }
     stages {
         stage('Build Docker Image') {
