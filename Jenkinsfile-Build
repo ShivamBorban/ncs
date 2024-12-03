@@ -6,10 +6,10 @@ pipeline {
                 sh 'docker build -t image1 .'
             }
         }
-    }
-    post {
-        always {
-            echo 'Build completed!'
+        stage('Trigger Deploy') {
+            steps {
+                build job: 'Deploy App'
+            }
         }
     }
 }
