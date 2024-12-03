@@ -2,15 +2,17 @@ pipeline {
     agent any
     parameters {
         string(name: 'Image Name', description: 'Type the name of the Docker image')
-        string(name: 'Container Name', description: 'Type the name of the Container ')
+        string(name: 'Container Name', description: 'Type the name of the Container')
         string(name: 'PORT', description: 'Enter PORT number')
     }
     stages {
         stage('Build Docker Image') {
             steps {
-                sh """
-                    docker build -t ${params['Image Name']} .
-                """
+                script {
+                    sh """
+                        docker build -t "${params['Image Name']}" .
+                    """
+                }
             }
         }
         stage('Trigger Deploy') {
