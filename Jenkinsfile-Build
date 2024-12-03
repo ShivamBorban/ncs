@@ -1,9 +1,12 @@
 pipeline {
     agent any
+    parameters {
+      string defaultValue: 'Image1', description: 'Type the name of Image', name: 'Image Name'
+    }
     stages {
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t image1 .'
+                sh 'docker build -t ${Image Name} .'
             }
         }
         stage('Trigger Deploy') {
