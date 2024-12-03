@@ -2,21 +2,22 @@ pipeline {
     agent any
     parameters {
         string(name: 'Container Name', defaultValue: 'cont1', description: 'Type the name of the Docker Container')
+        string(name: 'Image Name', defaultValue: 'image1', description: 'Type the name of the Docker Image')
     }
     stages {
         stage('Stop and Remove Existing Container') {
             steps {
-                sh '''
+                sh """
                     docker stop ${params['Container Name']} || true
                     docker rm ${params['Container Name']} || true
-                '''
+                """
             }
         }
         stage('Run Docker Container') {
             steps {
-                sh '''
+                sh """
                     docker run -d -p 9090:80 --name ${params['Container Name']} ${params['Image Name']}
-                '''
+                """
             }
         }
     }
