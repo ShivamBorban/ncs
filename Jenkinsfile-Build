@@ -13,7 +13,9 @@ pipeline {
         }
         stage('Trigger Deploy') {
             steps {
-                build job: 'Deploy App'
+                build job: 'Deploy App', parameters: [
+                    string(name: 'Image Name', value: "${params['Image Name']}")
+                ]
             }
         }
     }
