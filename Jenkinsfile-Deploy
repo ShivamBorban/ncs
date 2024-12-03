@@ -1,8 +1,8 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'Container Name', defaultValue: 'cont1', description: 'Type the name of the Docker Container')
-        string(name: 'Image Name', defaultValue: 'image1', description: 'Type the name of the Docker Image')
+        string(name: 'Container Name', description: 'Type the name of the Docker Container')
+        string(name: 'Image Name', description: 'Type the name of the Docker Image')
     }
     stages {
         stage('Stop and Remove Existing Container') {
