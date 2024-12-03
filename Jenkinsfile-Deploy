@@ -3,6 +3,7 @@ pipeline {
     parameters {
         string(name: 'Container Name', description: 'Type the name of the Docker Container')
         string(name: 'Image Name', description: 'Type the name of the Docker Image')
+        string(name: 'PORT', description: 'Enter PORT number')
     }
     stages {
         stage('Stop and Remove Existing Container') {
