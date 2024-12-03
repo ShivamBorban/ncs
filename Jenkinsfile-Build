@@ -15,6 +15,7 @@ pipeline {
             steps {
                 build job: 'Deploy App', parameters: [
                     string(name: 'Image Name', value: "${params['Image Name']}")
+                    string(name: 'Container Name', value: "${params['Container Name']}")
                 ]
             }
         }
