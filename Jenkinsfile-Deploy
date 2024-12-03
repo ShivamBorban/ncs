@@ -15,7 +15,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 sh '''
-                    docker run -d -p 9090:80 --name ${params['Container Name']} image1
+                    docker run -d -p 9090:80 --name ${params['Container Name']} ${params['Image Name']}
                 '''
             }
         }
