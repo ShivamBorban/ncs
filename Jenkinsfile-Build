@@ -3,7 +3,6 @@ pipeline {
     parameters {
         string(name: 'Image Name', description: 'Type the name of the Docker image')
         string(name: 'Container Name', description: 'Type the name of the Container')
-        string(name: 'PORT', description: 'Enter PORT number')
     }
     stages {
         stage('Build Docker Image') {
@@ -20,7 +19,6 @@ pipeline {
                 build job: 'Deploy App', parameters: [
                     string(name: 'Image Name', value: "${params['Image Name']}"),
                     string(name: 'Container Name', value: "${params['Container Name']}"),
-                    string(name: 'PORT', value: "${params['PORT']}")
                 ]
             }
         }
