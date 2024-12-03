@@ -6,7 +6,9 @@ pipeline {
     stages {
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t ${params["Image Name"]} .'
+                sh """
+                    docker build -t ${params['Image Name']} .
+                """
             }
         }
         stage('Trigger Deploy') {
