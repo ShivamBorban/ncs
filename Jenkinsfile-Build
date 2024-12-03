@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t image1 .'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Build completed!'
+        }
+    }
+}
