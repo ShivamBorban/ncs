@@ -4,6 +4,7 @@ num1=$1
 num2=$2
 num3=$3
 num4=$4
+name=$5
 #############################################################
 
 echo " "
@@ -41,6 +42,12 @@ done
 
 echo " "
 
+
+greet_user() {
+    echo "Hello, ${name}! Welcome to the world of Bash scripting."
+}
+
+greet_user "${name}"
 
 
 
