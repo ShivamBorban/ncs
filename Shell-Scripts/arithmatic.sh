@@ -1,3 +1,4 @@
+#!/bin/bash
 echo " "
 
 num1=$1
@@ -12,12 +13,7 @@ echo "Subtraction = $((num1-num2))"
 echo "Multiplication = $((num1*num2))"
 echo "Quotient = $((num1/num2))"
 echo "Reminder = $((num1%num2))"
-
-((num1++))
-echo "Increment = ${num1}"
-
-((num1--))
-echo "Decrement = ${num1}"
-
+echo "Increment = $((++num1))"
+echo "Decrement = $((--num1))"
 
 echo " "
