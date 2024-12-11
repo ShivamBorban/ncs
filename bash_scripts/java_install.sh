@@ -1,12 +1,11 @@
 #!/bin/bash
 
 set -e
-set -u
 set -x
 
-INSTALL_DIR=$1
-VERSION=${2:-"22"}
-SUBVERSION=${3:-"22.0.2"}
+export INSTALL_DIR=$1
+export VERSION=${2:-"22"}
+export SUBVERSION=${3:-"22.0.2"}
 
 if [ $# -lt 1 ]; then
     echo "Error: Missing installation directory."
