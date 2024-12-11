@@ -1,14 +1,20 @@
 #!/bin/bash
 
-# Install java 
-if java -version 2>&1 | grep -q "openjdk version \"17"; then
+is_java_17_installed() {
+    java -version 2>&1 | grep -q "openjdk version \"17"
+}
+
+# Check if Java 17 is already installed
+if is_java_17_installed; then
     echo "Java 17 is already installed. Skipping installation."
 else
     echo "Java 17 is not installed. Proceeding with installation..."
+    
     sudo apt update
     sudo apt install -y fontconfig openjdk-17-jre
     
-    if java -version 2>&1 | grep -q "openjdk version \"17"; then
+    # Verify if Java 17 was successfully installed
+    if is_java_17_installed; then
         echo "Java 17 installed successfully."
     else
         echo "Failed to install Java 17."
@@ -50,5 +56,6 @@ sudo systemctl status jenkins --no-pager
 
 echo "Jenkins installation completed. Initial Admin Password:
 "
+
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
