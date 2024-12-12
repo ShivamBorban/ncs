@@ -1,0 +1,6 @@
+---
+- name: Create a directory using a role
+  hosts: localhost
+  roles:
+    - create_dir_role
+

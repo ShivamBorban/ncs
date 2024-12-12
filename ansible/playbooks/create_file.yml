@@ -1,0 +1,4 @@
+- name: Create a file using create_file role
+  hosts: localhost
+  roles:
+    - create_file_role

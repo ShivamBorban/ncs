@@ -1,0 +1,6 @@
+# playbook.yml
+- name: Create developers group using create_group role
+  hosts: localhost
+  become: yes
+  roles:
+    - create_group_role

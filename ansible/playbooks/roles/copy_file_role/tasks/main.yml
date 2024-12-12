@@ -1,0 +1,5 @@
+---
+- name: Copy file to the local machine
+  ansible.builtin.copy:
+    src: file.txt
+    dest: /home/ncs/ansible_practice
