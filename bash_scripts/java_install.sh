@@ -1,20 +1,15 @@
 #!/bin/bash
+set -e 
 
-set -e
-set -x
-
-export INSTALL_DIR=$1
-export VERSION=${2:-"22"}
-export SUBVERSION=${3:-"22.0.2"}
+INSTALL_DIR=$1
+VERSION=${2:-"22"}
+SUBVERSION=${3:-"22.0.2"}
 
 if [ $# -lt 1 ]; then
     echo "Error: Missing installation directory."
     echo "Usage: $0 <installation_directory> [java_version] [java_subversion]"
     exit 1
 fi
-
-echo "Enter the installation directory (absolute path):${INSTALL_DIR}"
-echo "Enter Your JAVA VERSION: ${VERSION} and ${SUBVERSION}"
 
 if [ -d "${INSTALL_DIR}/jdk-${SUBVERSION}" ]; then
     echo "Java VERSION ${SUBVERSION} already exists in the specified directory."
@@ -28,34 +23,31 @@ cd "${INSTALL_DIR}"
 wget https://download.oracle.com/java/${VERSION}/archive/jdk-${SUBVERSION}_linux-x64_bin.tar.gz
 
 tar -xvzf jdk-${SUBVERSION}_linux-x64_bin.tar.gz
+rm -f "jdk-${SUBVERSION}_linux-x64_bin.tar.gz"
 
+update_bashrc() {
+    local export_line="$1"
+    grep -q "$export_line" ~/.bashrc
+}
 
-# Replace existing JAVA_HOME if present, or add a new one
-if grep -q "export JAVA_HOME=" ~/.bashrc; then
-    # Update the existing JAVA_HOME
+if update_bashrc "export JAVA_HOME="; then
     sed -i "s|export JAVA_HOME=.*|export JAVA_HOME=${INSTALL_DIR}/jdk-${SUBVERSION}|g" ~/.bashrc
-    echo "Updated JAVA_HOME to ${INSTALL_DIR}/jdk-${SUBVERSION} in ~/.bashrc."
+    echo "Replaced existing JAVA_HOME"
 else
-    # Add JAVA_HOME if it doesn't exist
     echo "export JAVA_HOME=${INSTALL_DIR}/jdk-${SUBVERSION}" >> ~/.bashrc
-    echo "Added JAVA_HOME to ~/.bashrc."
+    echo "Added JAVA_HOME"
 fi
 
-
-# Check if PATH is already set for Java
-if ! grep -q "JAVA_HOME/bin" ~/.bashrc; then
-    echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> ~/.bashrc
-else
+if update_bashrc "JAVA_HOME/bin"; then
     echo "Java PATH is already set in ~/.bashrc. Skipping..."
+else
+    echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> ~/.bashrc
+    echo "Added the PATH"
 fi
 
 source ~/.bashrc
-
-
-
-rm -f "jdk-${SUBVERSION}_linux-x64_bin.tar.gz"
-
 java -version
+which java
 
 unset INSTALL_DIR
 unset VERSION

@@ -53,9 +53,6 @@ else
 fi
 
 sudo systemctl status jenkins --no-pager
-
-echo "Jenkins installation completed. Initial Admin Password:
-"
-
+echo "Jenkins installation completed. Initial Admin Password:"
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
