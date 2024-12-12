@@ -1,0 +1,11 @@
+- name: Update and upgrade all packages
+  hosts: localhost
+  become: yes  
+  tasks:
+    - name: Run apt-get update
+      ansible.builtin.apt:
+        update_cache: yes  
+
+    - name: Run apt-get upgrade
+      ansible.builtin.apt:
+        upgrade: dist  
