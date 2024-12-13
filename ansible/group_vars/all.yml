@@ -6,4 +6,3 @@ file_mode: '0755'
 source_file: "file.txt"
 dest_file: "/home/ncs/ansible_practice"
 group_name: "developers"
-

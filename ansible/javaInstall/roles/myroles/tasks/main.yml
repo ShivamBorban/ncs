@@ -1,0 +1,22 @@
+---
+- name: This task will create a directory
+  ansible.builtin.file:
+    path: "{{ directory_path }}"
+    state: directory
+    mode: "0755"
+
+- name: Download the Java tar file
+  ansible.builtin.get_url:
+    url: "https://download.oracle.com/java/{{version}}/archive/jdk-{{subversion}}_linux-x64_bin.tar.gz"
+    dest: "{{ directory_path }}"
+
+- name: Extract the Java tar file
+  ansible.builtin.unarchive:
+    src: "{{ directory_path }}/jdk-{{subversion}}_linux-x64_bin.tar.gz"
+    dest: "{{ directory_path }}"
+
+- name: This task will remove a Tar file
+  ansible.builtin.file:
+    path: "{{ directory_path }}/jdk-{{subversion}}_linux-x64_bin.tar.gz"
+    state: absent
+        

@@ -1,6 +1,7 @@
 ---
-- name: Executes tasks using a role
+- name: Install JAVA
   hosts: localhost
   become: yes
   roles:
     - myroles
+
