@@ -1,7 +1,4 @@
-- name: Create a file
-  hosts: localhost  
-  tasks:
-    - name: Task will Create a file
-      ansible.builtin.file:
-        path: /home/ncs/ansible_practice/example.txt
-        state: touch
+- name: Create a file using create_file role
+  hosts: localhost
+  roles:
+    - create_file_role

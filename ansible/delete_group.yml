@@ -1,0 +1,8 @@
+- name: Delete developers group
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Remove the developers group
+      ansible.builtin.group:
+        name: developers
+        state: absent

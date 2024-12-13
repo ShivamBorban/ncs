@@ -1,0 +1,6 @@
+---
+- name: Executes tasks using a role
+  hosts: localhost
+  become: yes
+  roles:
+    - roles

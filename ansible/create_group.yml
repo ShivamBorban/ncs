@@ -1,8 +1,6 @@
-- name: Creating developers group 
-  hosts: localhost  
-  become: yes       
-  tasks:
-    - name: Add a group
-      ansible.builtin.group:
-        name: developers
-        state: present
+# playbook.yml
+- name: Create developers group using create_group role
+  hosts: localhost
+  become: yes
+  roles:
+    - create_group_role

@@ -1,11 +1,5 @@
-- name: Update and upgrade all packages
+- name: Update and upgrade all packages using update_upgrade role
   hosts: localhost
-  become: yes  
-  tasks:
-    - name: Run apt-get update
-      ansible.builtin.apt:
-        update_cache: yes  
-
-    - name: Run apt-get upgrade
-      ansible.builtin.apt:
-        upgrade: dist  
+  become: yes
+  roles:
+    - update_role

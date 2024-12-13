@@ -1,0 +1,42 @@
+---
+- name: This task will create a directory
+  ansible.builtin.file:
+    path: "{{ directory_path }}"
+    state: directory
+    mode: "{{ directory_mode }}"
+  tags: create_directory
+
+- name: This task will create a file
+  ansible.builtin.file:
+    path: "{{ file_path }}"
+    state: touch
+    mode: "{{ file_mode }}"
+  tags: create_file
+
+- name: This task will copy a file
+  ansible.builtin.copy:
+    src: "{{ source_file }}"
+    dest: "{{ dest_file }}"
+  tags: copy_file
+
+- name: This task will add a group 'developers'
+  ansible.builtin.group:
+    name: "{{ group_name }}"
+    state: present
+  tags: add_group
+
+- name: Remove the developers group
+  ansible.builtin.group:
+    name: "{{ group_name }}"
+    state: absent
+  tags: remove_group
+
+- name: This task will run apt-get update
+  ansible.builtin.apt:
+    update_cache: yes
+  tags: update_packages
+
+- name: This task will run apt-get upgrade
+  ansible.builtin.apt:
+    upgrade: dist
+  tags: upgrade_packages
