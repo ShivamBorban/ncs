@@ -1,5 +1,0 @@
----
-- name: Copy a file using the file_copy role
-  hosts: localhost
-  roles:
-    - roles

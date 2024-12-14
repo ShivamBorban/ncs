@@ -19,4 +19,15 @@
   ansible.builtin.file:
     path: "{{ directory_path }}/jdk-{{subversion}}_linux-x64_bin.tar.gz"
     state: absent
-        
+
+- name: Add JAVA_HOME to ~/.bashrc
+  ansible.builtin.blockinfile:
+    path: "{{ user_dir }}/.bashrc"
+    block: |
+      export JAVA_HOME={{ directory_path }}/jdk-{{subversion}}
+      export PATH=$JAVA_HOME/bin:$PATH
+    state: present
+
+- name: Execute the command 
+  ansible.builtin.shell: "bash -c 'source ~/.bashrc'"
+    

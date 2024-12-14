@@ -1,5 +1,0 @@
-- name: Update and upgrade all packages using update_upgrade role
-  hosts: localhost
-  become: yes
-  roles:
-    - update_role
