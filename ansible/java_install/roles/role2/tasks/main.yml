@@ -1,0 +1,24 @@
+---
+- name: This task will create a directory
+  ansible.builtin.file:
+    path: "{{ directory_path }}"
+    state: directory
+    mode: "0755"
+
+- name: Copy the Java installation script
+  ansible.builtin.copy:
+    src: java_install.sh
+    dest: "{{ directory_path }}/java_install.sh"
+    mode: "0755"
+
+- name: Execute the Java installation script
+  ansible.builtin.command: >
+    /bin/bash {{ directory_path }}/java_install.sh
+    "{{ directory_path }}"
+    "{{ version }}"
+    "{{ subversion }}"
+
+- name: This task will delete the script file
+  ansible.builtin.file:
+    path: "{{ directory_path }}/java_install.sh"
+    state: absent

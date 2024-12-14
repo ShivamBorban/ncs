@@ -3,5 +3,5 @@
   hosts: localhost
   become: yes
   roles:
-    - myroles
+    - role2
 
