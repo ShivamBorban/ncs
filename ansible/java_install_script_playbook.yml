@@ -1,5 +1,5 @@
 ---
-- name: Install JAVA
+- name: Install JAVA using a script file
   hosts: localhost
   become: yes
   roles:
