@@ -1,0 +1,7 @@
+---
+- name: Install JAVA
+  hosts: localhost
+  become: yes
+  roles:
+    - java_install_role
+

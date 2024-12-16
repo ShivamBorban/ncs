@@ -1,7 +1,0 @@
-- name: Create a file
-  hosts: localhost  
-  tasks:
-    - name: Task will Create a file
-      ansible.builtin.file:
-        path: /home/ncs/ansible_practice/example.txt
-        state: touch

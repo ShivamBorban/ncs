@@ -1,9 +1,0 @@
----
-- name: Create a directory
-  hosts: localhost
-  tasks:
-    - name: This task will create a directory 
-      ansible.builtin.file:
-        path: /home/ncs/ansible_practice/demo
-        state: directory
-        mode: '0755'

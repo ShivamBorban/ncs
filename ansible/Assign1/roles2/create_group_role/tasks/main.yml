@@ -1,5 +1,0 @@
----
-- name: Add a group 'developers'
-  ansible.builtin.group:
-    name: developers
-    state: present

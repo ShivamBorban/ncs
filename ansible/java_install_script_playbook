@@ -3,5 +3,4 @@
   hosts: localhost
   become: yes
   roles:
-    - role2
-
+    - java_install_script_role

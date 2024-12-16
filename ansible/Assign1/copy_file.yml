@@ -1,7 +1,0 @@
-- name: Copy a file 
-  hosts: localhost  
-  tasks:
-    - name: Copy file to the local machine
-      ansible.builtin.copy:
-        src: /home/ncs/myansible/copy_file.yml
-        dest: /home/ncs/ansible_practice

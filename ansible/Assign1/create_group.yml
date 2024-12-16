@@ -1,8 +1,0 @@
-- name: Creating developers group 
-  hosts: localhost  
-  become: yes       
-  tasks:
-    - name: Add a group
-      ansible.builtin.group:
-        name: developers
-        state: present
