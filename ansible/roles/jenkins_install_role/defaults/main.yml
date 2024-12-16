@@ -1,4 +1,3 @@
 ---
-install_java: "openjdk-17-jre"
 GPG_key: "https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key"
 jenkins_repo: "deb https://pkg.jenkins.io/debian-stable binary/"

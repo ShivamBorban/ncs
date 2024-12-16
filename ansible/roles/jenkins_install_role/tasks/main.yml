@@ -4,10 +4,9 @@
     update_cache: yes
     upgrade: dist
 
-- name: Install Java for Jenkins
-  ansible.builtin.apt:
-    name: "{{ install_java }}"
-    state: present
+- name: Import role to install java
+  ansible.builtin.import_role:
+    name: java_install_role
 
 - name: Add Jenkins GPG key
   ansible.builtin.apt_key:

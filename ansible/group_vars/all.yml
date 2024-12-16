@@ -1,8 +1,8 @@
----
-directory_path: "/home/ncs/ansible_practice"
-directory_mode: '0755'
-file_path: "/home/ncs/ansible_practice/example.txt"
-file_mode: '0755'
-source_file: "file.txt"
-dest_file: "/home/ncs/ansible_practice"
-group_name: "developers"
+#---
+#directory_path: "/home/ncs/ansible_practice"
+#directory_mode: '0755'
+#file_path: "/home/ncs/ansible_practice/example.txt"
+#file_mode: '0755'
+#source_file: "file.txt"
+#dest_file: "/home/ncs/ansible_practice"
+#group_name: "developers"
