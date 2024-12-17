@@ -4,9 +4,14 @@
     update_cache: yes
     upgrade: dist
 
-- name: Import role to install java
-  ansible.builtin.import_role:
-    name: java_install_role
+#- name: Import role to install java
+#  ansible.builtin.import_role:
+#    name: java_install_role
+
+- name: Install JAVA
+  ansible.builtin.apt:
+    name: openjdk-17-jre
+    state: present
 
 - name: Add Jenkins GPG key
   ansible.builtin.apt_key:
@@ -32,3 +37,4 @@
     name: jenkins
     state: started
     enabled: yes
+

@@ -1,0 +1,26 @@
+---
+- name: This task will create a directory
+  ansible.builtin.file:
+    path: "{{ directory_path }}/jenkins_install.sh"
+    state: directory
+    mode: "0755"
+
+- name: Copy the Jenkins installation script
+  ansible.builtin.copy:
+    src: script.sh
+    dest: "{{ directory_path }}/jenkins_install.sh"
+    mode: "0755"
+
+- name: Set execute permissions on the script
+  ansible.builtin.file:
+    path: "{{ directory_path }}/jenkins_install.sh"
+    mode: '0755'
+
+- name: Run the script
+  ansible.builtin.command:
+    cmd: "{{ directory_path }}/jenkins_install.sh"
+
+- name: This task will delete a directory
+  ansible.builtin.file:
+    path: "{{ directory_path }}/jenkins_install.sh"
+    state: absent
