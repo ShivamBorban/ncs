@@ -2,14 +2,17 @@ provider "aws" {
   region = var.region
 }
 
+data "template_file" "user_data" {
+  template = file("user_data.sh")  
+}
+
 resource "aws_instance" "Ubuntu" {
   ami             = var.ami
   instance_type   = var.instance_type
   key_name        = var.key_name
   security_groups = [aws_security_group.my_sg.name]
-  user_data       = var.user_data
+  user_data       = data.template_file.user_data.rendered
 }
-
 resource "aws_security_group" "my_sg" {
   name = "my_sg"
   ingress {

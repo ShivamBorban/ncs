@@ -19,10 +19,10 @@ variable "key_name" {
 }
 
 
-variable "user_data" {
-  type    = string
-  default = <<-EOF
-      #!/bin/sh
-      sudo apt-get update
-      EOF
-}
+#variable "user_data" {
+#  type    = string
+#  default = <<-EOF
+#      #!/bin/bash
+#      sudo apt-get update
+#      EOF
+#}
