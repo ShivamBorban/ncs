@@ -1,6 +1,6 @@
 ---
 - name: Install Jenkins 
-  hosts: localhost
+  hosts: remote
   become: yes
   roles:
     - jenkins_install_role
