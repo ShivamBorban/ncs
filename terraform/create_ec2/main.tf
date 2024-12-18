@@ -1,9 +1,9 @@
 provider "aws" {
-  region  = "us-east-1"
+  region = "var.region"
 }
 
 resource "aws_instance" "Ubuntu" {
-  ami           = "ami-0e2c8caa4b6378d8c"
-  instance_type = "t2.micro"
-  key_name = "NV-1"
+  ami           = "var.ami"
+  instance_type = "var.instance_type"
+  key_name      = "var.key_name"
 }
